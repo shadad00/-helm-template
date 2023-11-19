@@ -1,9 +1,12 @@
+#Image to be used in the database container
 db:
   image: postgres:13.3
 
+#replica size of the api-deployment
 api:
   replicaSize: 3
 
+# use ssl or not 
 client:
   ssl: false
 
@@ -12,5 +15,7 @@ env:
   POSTGRES_PASSWORD: pass
   DATABASE_URL: postgresql://user:pass@db-service/api_prod
 
+#location in the minikube server to be used. This 
+# location should be created as indicated on README.md
 volume:
   minikubeLocation: /tmp/minikube/db
