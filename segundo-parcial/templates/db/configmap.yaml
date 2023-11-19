@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: db-configmap
 data:
-  POSTGRES_USER: user
-  POSTGRES_PASSWORD: pass
-  DATABASE_URL: postgresql://user:pass@db-service/api_prod
+  POSTGRES_USER: {{ .Values.env.POSTGRES_USER }}
+  POSTGRES_PASSWORD: {{ .Values.env.POSTGRES_PASSWORD }}
+  DATABASE_URL: {{ .Values.env.DATABASE_URL }}
