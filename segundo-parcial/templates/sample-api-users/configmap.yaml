@@ -8,3 +8,4 @@ data:
   PORT: "5000"
   POSTGRES_DB: api_prod
   APP_SETTINGS: src.config.ProductionConfig
+  DATABASE_URL: postgresql://user:pass@db-service/api_prod

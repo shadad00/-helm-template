@@ -42,4 +42,7 @@ spec:
                 name: api-configmap
                 key: POSTGRES_PASSWORD
           - name: DATABASE_URL
-            value: postgresql://user:pass@db-service/api_prod
+            valueFrom:
+              configMapKeyRef:
+                name: api-configmap
+                key: DATABASE_URL

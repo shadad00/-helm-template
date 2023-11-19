@@ -3,9 +3,10 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{if .Values.client.ssl}}
     cert-manager.io/cluster-issuer: selfsigned-issuer
+    {{ end }}
 spec:
   rules:
   - host: ejercicio.parcial.santi.com
