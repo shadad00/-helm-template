@@ -1,0 +1,8 @@
+db:
+  image: postgres:13.3
+
+api:
+  replicaSize: 3
+
+client:
+  ssl: false

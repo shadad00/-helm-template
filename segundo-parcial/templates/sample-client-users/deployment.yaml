@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: shadad00/client_image:prod-202311161258
+          env: 
+          - name: API_HOST
+            valueFrom:
+              configMapKeyRef: 
+                name: client-configmap
+                key: API_HOST

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: create-sql
+data:
+  create.sql: |
+    CREATE DATABASE api_prod;
+    \c api_prod; 
+
+    CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(128) NOT NULL,
+    email VARCHAR(128) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS zones (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(128) NOT NULL,
+    create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+    );
+
+
+

@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: selfsigned-issuer
+spec:
+  rules:
+  - host: ejercicio.parcial.santi.com
+    http:
+      paths:
+      - path: /api(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:  
+            name: api-service
+            port:
+              number: 5000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:  
+            name: client-service
+            port:
+              number: 80
+  {{if .Values.client.ssl}}
+  tls: 
+  - hosts:
+    - ejercicio.parcial.santi.com
+    secretName: certificate-secret 
+  {{ end }}
+   
+
