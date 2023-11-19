@@ -34,15 +34,15 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               configMapKeyRef:
-                name: api-configmap
+                name: db-configmap
                 key: POSTGRES_USER
           - name: POSTGRES_PASS
             valueFrom:
               configMapKeyRef:
-                name: api-configmap
+                name: db-configmap
                 key: POSTGRES_PASSWORD
           - name: DATABASE_URL
             valueFrom:
               configMapKeyRef:
-                name: api-configmap
+                name: db-configmap
                 key: DATABASE_URL

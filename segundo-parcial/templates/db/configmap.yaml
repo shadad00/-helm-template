@@ -5,3 +5,4 @@ metadata:
 data:
   POSTGRES_USER: user
   POSTGRES_PASSWORD: pass
+  DATABASE_URL: postgresql://user:pass@db-service/api_prod
